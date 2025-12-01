@@ -16,11 +16,19 @@ st.title("Auto Analyst: Research Assistant")
 with st.sidebar:
     st.header("Setup")
     
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "hf_xxxxxxx"
+    # os.environ["HUGGINGFACEHUB_API_TOKEN"] = "hf_xxxxxxx"
 
-    os.environ["LANGCHAIN_API_KEY"] = "lc_xxxxxxx"
-    os.environ["LANGCHAIN_TRACING_V2"] = "true"
-    os.environ["LANGCHAIN_PROJECT"] = "Auto-Analyst"
+    # os.environ["LANGCHAIN_API_KEY"] = "lc_xxxxxxx"
+    # os.environ["LANGCHAIN_TRACING_V2"] = "true"
+    # os.environ["LANGCHAIN_PROJECT"] = "Auto-Analyst"
+
+    if "HUGGINGFACEHUB_API_TOKEN" in st.secrets:
+        os.environ["HUGGINGFACEHUB_API_TOKEN"] = st.secrets["HUGGINGFACEHUB_API_TOKEN"]
+
+    if "LANGCHAIN_API_KEY" in st.secrets:
+        os.environ["LANGCHAIN_API_KEY"] = st.secrets["LANGCHAIN_API_KEY"]
+        os.environ["LANGCHAIN_TRACING_V2"] = "true"
+        os.environ["LANGCHAIN_PROJECT"] = "Auto-Analyst"
 
     st.divider()
 
